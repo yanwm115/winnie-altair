@@ -4,10 +4,10 @@ import pandas as pd
 
 st.set_page_config(layout="wide")
 
-# display title
+# display title 
 st.title("Massachusetts Airbnb Listings")
 st.write(
-    "Let's explore and look at the relationships between neighborhoods, reviews, and prices."
+    "Let's explore and look at the relationships between neighborhoods, reviews, and prices!"
 )
 
 # Load and clean data
@@ -38,12 +38,12 @@ chart3 = alt.Chart(df_viz).mark_circle(opacity=0.5).encode(
     x=alt.X("price:Q", scale=alt.Scale(domain=[0, 500])),
     y="review_scores_rating:Q",
     color="room_type:N",
-    tooltip=["price", "review_scores_rating"]
+    tooltip=["neighbourhood_cleansed","price", "review_scores_rating"]
 ).properties(title="Review Score vs. Price", width=500).interactive()
 
 st.altair_chart(chart1, use_container_width=True)
 st.altair_chart(chart2, use_container_width=True)
-st.altair_chart(chart3, use_container_width=True)
+st.altair_chart(chart3, use_container_width=True) 
 
 
 # Apply filters and sidebar 
@@ -62,3 +62,5 @@ df_filtered = df[
 if neighborhood != 'All':
     df_filtered = df_filtered[df_filtered['neighbourhood_cleansed'] == neighborhood]
 
+
+# Changes to graphs so when filter, it changes too
